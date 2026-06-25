@@ -1,0 +1,200 @@
+\documentclass[10.5pt,letterpaper]{article}
+
+\usepackage[top=0.55in, bottom=0.55in, left=0.6in, right=0.6in]{geometry}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{parskip}
+\usepackage[T1]{fontenc}
+\newcommand{\pipe}{$\quad \mid \quad$}
+\hypersetup{colorlinks=false, hidelinks}
+
+% No page numbers
+\pagestyle{empty}
+
+% Section formatting: bold, all caps, full-width rule below
+\titleformat{\section}
+  {\normalfont\bfseries\normalsize}
+  {}{0em}
+  {\MakeUppercase}
+  [\vspace{-4pt}\rule{\linewidth}{0.6pt}]
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+
+% Tight lists
+\setlist[itemize]{leftmargin=1.4em, itemsep=1pt, topsep=2pt, parsep=0pt, label=\textbullet}
+
+% No paragraph indent
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+
+% Helper: right-aligned date on same line
+\newcommand{\entrytitle}[2]{%
+  \textbf{#1}\hfill #2%
+}
+\newcommand{\entrysub}[2]{%
+  \textit{#1}\hfill \textit{#2}%
+}
+
+\begin{document}
+
+%% ── HEADER ──────────────────────────────────────────────────────────────────
+\begin{center}
+  {\LARGE\bfseries Md Shaifur Rahman}\\[4pt]
+  Seattle, WA 98115 \pipe{} 
+  \href{mailto:mdshaifur@protonmail.com}{mdshaifur@protonmail.com} \pipe{}
+  917-701-0637 \pipe{} \href{https://linkedin.com/in/mdshaifur}{linkedin.com/in/mdshaifur}\\[2pt]
+  \href{https://github.com/shaifurcodes}{github.com/shaifurcodes}\pipe{} 
+  \href{https://dev.to/shaifurcodes}{dev.to/shaifurcodes}\pipe{} 
+  \href{https://plasso.ai}{plasso.ai}\pipe{} 
+  \href{https://plasso.ai/portfolio}{plasso.ai/portfolio}
+\end{center}
+
+\vspace{2pt}
+
+%% ── SUMMARY ─────────────────────────────────────────────────────────────────
+\section{Summary}
+Computer Science PhD with 10+ years building end-to-end embedded and wireless systems.
+Inventor on 4 US patents; 8 peer-reviewed publications (200+ citations, h-index 7).
+Expertise spans real-time firmware in C/C++ (ARM Cortex-M, STM32, FreeRTOS/Zephyr),
+sensor fusion (UWB/IMU/LoRa), AI inference on edge hardware (Jetson Orin Nano,
+llama.cpp/CUDA), and full-stack system integration from hardware bring-up to production
+deployment. Founder \& CEO of Plasso, an AI persona robotics startup.
+
+%% ── TECHNICAL SKILLS ────────────────────────────────────────────────────────
+\section{Technical Skills}
+
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{2.1cm}X@{}}
+Languages     & C, C++17 (expert), Python, ARM Assembly, Java, MATLAB; working knowledge of JavaScript, HTML \\[2pt]
+Embedded / HW & ARM Cortex-M (STM32, NXP), NVIDIA Jetson Orin Nano, Raspberry Pi, FPGA (Xilinx Arty A7/Vivado);
+                SPI, I2C, UART, CAN, USB; JTAG/SWD; FreeRTOS, Zephyr \\[2pt]
+Radios \& Sensors & UWB (Qorvo/Decawave), LoRa, Wi-Fi, FSO, USRP (GnuRadio), mmWave, RTL-SDR;
+                    IMU, LiDAR (RPLidar), cameras \\[2pt]
+AI / Edge     & llama.cpp (custom CUDA 13.2 build), Whisper.cpp, Piper TTS, DistilBERT NLI,
+                PyTorch, CUDA, cuQuantum, scikit-learn, TensorFlow \\[2pt]
+Robotics      & ROS2, LeRobot (SO-ARM101 arm), sensor fusion, encoder-based odometry, SLAM concepts \\[2pt]
+Systems       & Linux kernel programming, Docker, CMake, GCC, Git, REST API, MQTT, GnuRadio, NS-3, Zemax \\[2pt]
+Data          & MySQL, Oracle, MongoDB, Qdrant (vector DB), ZenML \\
+\end{tabularx}
+
+%% ── EXPERIENCE ──────────────────────────────────────────────────────────────
+\section{Professional Experience}
+
+\entrytitle{Plasso (\href{https://plasso.ai}{plasso.ai})}{Seattle, WA}\\
+\entrysub{Founder \& CEO}{2025 -- Present}
+\begin{itemize}
+  \item Architecting an AI persona robot platform with swappable downloadable personalities running fully
+        offline on NVIDIA Jetson Orin Nano; STT$\to$LLM$\to$TTS pipeline (Whisper.cpp $\to$ llama.cpp/Gemma
+        $\to$ Piper) achieving $<$500\,ms round-trip latency on-device.
+  \item Built a custom CUDA 13.2-compatible llama.cpp from source for JetPack 7.2 (resolved container
+        incompatibility); integrated DistilBERT zero-shot NLI classifier for real-time query routing in a
+        Python AI agent, replacing fragile regex-based routing.
+  \item Launched full company infrastructure: domain (plasso.ai), Netlify investor landing page, USPTO
+        Class 009 trademark filing, GitHub repos, and social channels; targeting US Semiquincentennial
+        (July 4, 2026) with a Lincoln Edition persona as launch wedge.
+  \item Designed 4-DOF upper-body companion robot architecture with Qdrant-backed RAG and an
+        App-Store-style persona marketplace; offline STT/LLM/TTS stack runs without cloud dependency.
+\end{itemize}
+
+\vspace{4pt}
+\entrytitle{NEC Labs America}{Princeton, NJ}\\
+\entrysub{Research Intern --- Embedded Systems \& Localization}{Jun 2019 -- Apr 2021}
+\begin{itemize}
+  \item Led firmware and algorithm development for NavigateIO, a zero-infrastructure 3D indoor tracking
+        system for first responders, fusing UWB, IMU, LoRa, and Visual Odometry on ARM Cortex-M targets.
+  \item Achieved sub-meter 3D localization accuracy in multi-story NLOS environments using COTS Qorvo
+        DW1000 modules; drop-and-go anchor architecture enables deployment in under 60 seconds.
+  \item Co-invented 4 granted US patents (12,335,899 $\cdot$ 12,207,226 $\cdot$ 11,595,934 $\cdot$
+        11,388,564); contributed to securing \$1M in seed capital.
+  \item Built complete embedded IoT stack: hardware bring-up, sensor drivers (SPI/I2C/UART), real-time
+        data pipelines, and fault-tolerant diagnostics for field deployments.
+\end{itemize}
+
+\vspace{4pt}
+\entrytitle{Stony Brook University --- Wireless \& Networks Lab}{Stony Brook, NY}\\
+\entrysub{Research Assistant (NSF-funded, 3 concurrent grants)}{May 2014 -- May 2019}
+\begin{itemize}
+  \item \textbf{FSO-VR} (NSF \#1815306, \$500K): Designed and prototyped a steerable Free Space Optics
+        wireless link for AR/VR headsets using Galvo-mirror beam steering and real-time RSSI feedback;
+        achieved 99.99\% link availability at 8K VR bandwidth; led to a US patent.
+  \item \textbf{FSONet} (NSF \#1514017, \$720K): Built a 100\,m FSO backhaul prototype with custom
+        Tracking \& Pointing mechanism; validated resilience against fog and vibration; formulated
+        near-optimal transceiver placement algorithm for 3D urban topologies (NYC, San Francisco);
+        published at ACM MobiCom 2017.
+  \item \textbf{SpecSense} (NSF \#1642965, \$800K): Developed crowdsensed spectrum occupancy mapping
+        using RTL-SDRs and spatial interpolation; designed temporal clustering for time-varying maps;
+        published at IEEE INFOCOM 2017.
+\end{itemize}
+
+\vspace{4pt}
+\entrytitle{Philips Research North America}{Briarcliff, NY}\\
+\entrysub{Research Intern --- IoT}{Jun 2015 -- Aug 2015}
+\begin{itemize}
+  \item Implemented IoT mesh network protocols optimized for 4G backhaul connectivity in a healthcare
+        device context.
+\end{itemize}
+
+\vspace{4pt}
+\entrytitle{Bangladesh University of Engineering and Technology}{Dhaka, Bangladesh}\\
+\entrysub{Lecturer, Computer Science}{May 2009 -- Jun 2013}
+\begin{itemize}
+  \item Delivered courses on VLSI Design, AI, Theory of Computation, OS, Database Systems, and
+        Microprocessor Design; served as CISCO CCNA 1--4 Trainer.
+  \item Consulted for Central Bank of Bangladesh automation project and Bangladesh's first
+        machine-readable passport system.
+\end{itemize}
+
+%% ── EDUCATION ───────────────────────────────────────────────────────────────
+\section{Education}
+
+\entrytitle{Stony Brook University}{Stony Brook, NY}\\
+\entrysub{Ph.D., Computer Science}{May 2025}
+\begin{itemize}
+  \item Dissertation: ``License-free Use of RF and Infrared Spectrum'' ---
+        Advisors: Prof.\ Himanshu Gupta \& Prof.\ Samir Das
+  \item Dept.\ Fellowship (2013--2014); ACM SIGCOMM, MobiSys \& IEEE SMARTCOMP Travel Grant recipient
+\end{itemize}
+
+\vspace{4pt}
+\entrytitle{Stony Brook University}{Stony Brook, NY}\\
+\entrysub{M.S., Computer Science\ \ ---\ \ GPA 3.78/4.0}{Dec 2017}
+
+\vspace{4pt}
+\entrytitle{Bangladesh University of Engineering and Technology}{Dhaka, Bangladesh}\\
+\entrysub{B.S., Computer Science\ \ ---\ \ GPA 3.92/4.0\ \ (Dean's List every semester)}{Mar 2009}
+
+%% ── PATENTS ─────────────────────────────────────────────────────────────────
+\section{US Patents\ \ {\normalfont\small(all from NavigateIO first-responder tracking system)}}
+
+\begin{itemize}
+  \item US 12,335,899: Simultaneous localization and synchronization across multiple antennas
+  \item US 12,207,226: Device tracking with radio ranging and sensor functions
+  \item US 11,595,934: Infrastructure-free tracking and response
+  \item US 11,388,564: Infrastructure-free RF tracking in dynamic indoor environments
+\end{itemize}
+
+%% ── PUBLICATIONS ────────────────────────────────────────────────────────────
+\section{Selected Publications\ \ {\normalfont\small(190+ citations, h-index 7 ---
+  \href{https://scholar.google.com/citations?user=H0kYswEAAAAJ}{Google Scholar})}}
+
+\begin{enumerate}[leftmargin=1.6em, itemsep=1pt, topsep=2pt, parsep=0pt]
+  \item \textbf{Rahman} et al. ``DynoLoc: Infrastructure-free RF Tracking in Dynamic Indoor
+        Environments.'' \textit{Under revision, IEEE Trans.\ Mobile Computing}, 2026.
+  \item \textbf{Rahman} et al. ``FSONet: A Wireless Backhaul for Multi-Gigabit Picocells Using
+        Steerable FSO.'' \textit{ACM MobiCom}, 2017.
+  \item \textbf{Rahman} et al. ``SpecSense: Crowdsensing for Efficient Querying of Spectrum
+        Occupancy.'' \textit{IEEE INFOCOM}, 2017.
+  \item \textbf{Rahman} et al. ``FSO-VR: Steerable Free Space Optics Link for Virtual Reality
+        Headsets.'' \textit{ACM WearSys}, 2018.
+  \item Curran, \textbf{Rahman} et al. ``Rethinking Virtual Network Embedding in Reconfigurable
+        Networks.'' \textit{IEEE SECON}, 2018.
+  \item Gupta, \textbf{Rahman}, Curran. ``Spectrum Allocation via Pathloss Estimation in
+        Crowdsensed Shared Spectrum Systems.'' \textit{IEEE DySPAN}, 2019.
+  \item \textbf{Rahman} et al. ``Creating Spatio-temporal Spectrum Maps from Sparse Crowdsensed
+        Data.'' \textit{IEEE WCNC}, 2019.
+  \item \textbf{Rahman}, Naznin. ``Efficient Routing in a Sensor Network Using Collaborative
+        Ants.'' \textit{Springer ICSI}, 2016.
+\end{enumerate}
+
+\end{document}

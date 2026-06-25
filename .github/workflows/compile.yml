@@ -33,7 +33,7 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
           # Force git to find PDFs inside subfolders explicitly
-          git add generic/*.pdf
+          git add generic/main.pdf
           #git add Research-Scientist/*.pdf
           
           git commit -m "Automated Multi-PDF Compilation [skip ci]" || echo "No changes to commit"

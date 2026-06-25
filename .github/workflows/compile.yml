@@ -1,0 +1,40 @@
+name: Compile All Resume Versions
+
+on:
+  push:
+    branches:
+      - main  # Adjust if your main branch is called 'master'
+
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v4
+
+      # 1. Compile the first resume
+      - name: Compile SWE Resume
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex          # <-- Just the file name!
+          working_directory: generic/
+
+      # 2. Compile the second resume
+      #- name: Compile Research Resume
+      #  uses: xu-cheng/latex-action@v3
+      #  with:
+      #    root_file: cv.tex              # <-- Just the file name!
+      #    working_directory: Research-Scientist/
+
+      # 3. Commit and Push all generated PDFs
+      - name: Commit and Push Compiled PDFs
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Force git to find PDFs inside subfolders explicitly
+          git add generic/*.pdf
+          #git add Research-Scientist/*.pdf
+          
+          git commit -m "Automated Multi-PDF Compilation [skip ci]" || echo "No changes to commit"
+          git push

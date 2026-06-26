@@ -1,6 +1,6 @@
 \documentclass[10.5pt,letterpaper]{article}
 
-\usepackage[top=0.55in, bottom=0.55in, left=0.6in, right=0.6in]{geometry}
+\usepackage[top=0.55in, bottom=0.5in, left=0.6in, right=0.6in]{geometry}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{hyperref}
@@ -8,6 +8,7 @@
 \usepackage{array}
 \usepackage{parskip}
 \usepackage[T1]{fontenc}
+\usepackage{amssymb}
 \newcommand{\pipe}{$\quad \mid \quad$}
 \hypersetup{colorlinks=false, hidelinks}
 
@@ -23,7 +24,8 @@
 \titlespacing*{\section}{0pt}{8pt}{4pt}
 
 % Tight lists
-\setlist[itemize]{leftmargin=1.4em, itemsep=1pt, topsep=2pt, parsep=0pt, label=\textbullet}
+\setlist[itemize]{leftmargin=1.6em, itemsep=1pt, topsep=2pt, parsep=0pt, label=$\vcenter{\hbox{\tiny$\bullet$}}$}
+%\setlist[itemize]{topsep=2pt, itemsep=3pt, parsep=0pt, partopsep=0pt}
 
 % No paragraph indent
 \setlength{\parindent}{0pt}
@@ -34,9 +36,12 @@
   \textbf{#1}\hfill #2%
 }
 \newcommand{\entrysub}[2]{%
-  \textit{#1}\hfill \textit{#2}%
+  \vspace{1pt}\textit{#1}\hfill \textit{#2}%
 }
 
+% Tighten section spacing
+\titlespacing*{\section}{0pt}{6pt}{4pt}
+%
 \begin{document}
 
 %% ── HEADER ──────────────────────────────────────────────────────────────────
@@ -54,95 +59,82 @@
 \vspace{2pt}
 
 %% ── SUMMARY ─────────────────────────────────────────────────────────────────
-\section{Summary}
-Computer Science PhD with 10+ years building end-to-end embedded and wireless systems.
-Inventor on 4 US patents; 8 peer-reviewed publications (200+ citations, h-index 7).
-Expertise spans real-time firmware in C/C++ (ARM Cortex-M, STM32, FreeRTOS/Zephyr),
-sensor fusion (UWB/IMU/LoRa), AI inference on edge hardware (Jetson Orin Nano,
-llama.cpp/CUDA), and full-stack system integration from hardware bring-up to production
-deployment. Founder \& CEO of Plasso, an AI persona robotics startup.
+\section*{Summary}
+Computer Science PhD (2025) and startup founder with a strong systems R\&D background and 4 granted US patents that directly contributed to securing seed funding. Proven expertise engineering end-to-end intelligent systems, bridging low-level firmware and RTOS with real-time software stacks and hardware-accelerated ML inference on resource-constrained hardware. Leveraged this full-stack depth to architect the core infrastructure and AI stack powering Plasso (plasso.ai) --- bringing embodied AI from research to production.
 
 %% ── TECHNICAL SKILLS ────────────────────────────────────────────────────────
-\section{Technical Skills}
+\section*{Technical Skills}
+{\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{@{}p{0.22\textwidth}>{\arraybackslash\raggedright}X@{}}
 
-\begin{tabularx}{\linewidth}{@{}>{\bfseries}p{2.1cm}X@{}}
-Languages     & C, C++17 (expert), Python, ARM Assembly, Java, MATLAB; working knowledge of JavaScript, HTML \\[2pt]
-Embedded / HW & ARM Cortex-M (STM32, NXP), NVIDIA Jetson Orin Nano, Raspberry Pi, FPGA (Xilinx Arty A7/Vivado);
-                SPI, I2C, UART, CAN, USB; JTAG/SWD; FreeRTOS, Zephyr \\[2pt]
-Radios \& Sensors & UWB (Qorvo/Decawave), LoRa, Wi-Fi, FSO, USRP (GnuRadio), mmWave, RTL-SDR;
-                    IMU, LiDAR (RPLidar), cameras \\[2pt]
-AI / Edge     & llama.cpp (custom CUDA 13.2 build), Whisper.cpp, Piper TTS, DistilBERT NLI,
-                PyTorch, CUDA, cuQuantum, scikit-learn, TensorFlow \\[2pt]
-Robotics      & ROS2, LeRobot (SO-ARM101 arm), sensor fusion, encoder-based odometry, SLAM concepts \\[2pt]
-Systems       & Linux kernel programming, Docker, CMake, GCC, Git, REST API, MQTT, GnuRadio, NS-3, Zemax \\[2pt]
-Data          & MySQL, Oracle, MongoDB, Qdrant (vector DB), ZenML \\
-\end{tabularx}
+\textbf{Robotics \& Autonomy:} & ROS 2, Nav2, MoveIt 2, Trajectory Optimization, Gazebo, Isaac Sim, MuJoCo Playground, URDF, BehaviorTree.CPP, OpenCV, Depth Estimation, PCL, LiDAR SLAM, EKF, UKF, IMU, Sensor Fusion, Wheel Odometry \tabularnewline
+
+\textbf{Embodied AI \& ML:} & VLA, VLM, 3D Object Detection, Edge LLM Deployment, Gemma, SmolVLA, Llama.cpp, TensorRT, ONNX, ONNX Runtime, LeRobot, Imitation Learning, Reinforcement Learning, PyTorch, Hugging Face \tabularnewline
+
+\textbf{Embedded \& Systems:} & C, C++, Python, Zephyr, FreeRTOS, Low-Level Firmware, PID, Latency Optimization, Linux, SPI, I2C, UART, CAN Bus \tabularnewline
+
+\textbf{HW \& Edge Compute:} & NVIDIA Jetson Orin Nano, Jetson AGX, CUDA, 6-DOF SO-101 Robotic Arm, KiCad, RPLIDAR C1, IMX219 Cameras, Mobile Robot Power Systems \tabularnewline
+
+\textbf{DevOps \& Tooling:} & FreeCAD, OpenSCAD, CI/CD, GitHub Actions, Hardware-in-the-Loop, Regression Testing, Docker \tabularnewline
+
+\end{tabularx}}
+
 
 %% ── EXPERIENCE ──────────────────────────────────────────────────────────────
 \section{Professional Experience}
-
 \entrytitle{Plasso (\href{https://plasso.ai}{plasso.ai})}{Seattle, WA}\\
-\entrysub{Founder \& CEO}{2025 -- Present}
+\entrysub{Founder \& CEO}{May 2026 -- Present}
 \begin{itemize}
-  \item Architecting an AI persona robot platform with swappable downloadable personalities running fully
-        offline on NVIDIA Jetson Orin Nano; STT$\to$LLM$\to$TTS pipeline (Whisper.cpp $\to$ llama.cpp/Gemma
-        $\to$ Piper) achieving $<$500\,ms round-trip latency on-device.
-  \item Built a custom CUDA 13.2-compatible llama.cpp from source for JetPack 7.2 (resolved container
-        incompatibility); integrated DistilBERT zero-shot NLI classifier for real-time query routing in a
-        Python AI agent, replacing fragile regex-based routing.
-  \item Launched full company infrastructure: domain (plasso.ai), Netlify investor landing page, USPTO
-        Class 009 trademark filing, GitHub repos, and social channels; targeting US Semiquincentennial
-        (July 4, 2026) with a Lincoln Edition persona as launch wedge.
-  \item Designed 4-DOF upper-body companion robot architecture with Qdrant-backed RAG and an
-        App-Store-style persona marketplace; offline STT/LLM/TTS stack runs without cloud dependency.
+    \item Architected an end-to-end embodied AI robotics platform as sole founder, executing full-lifecycle hardware/software co-design across mechanical assemblies, custom PCBs in KiCad, and low-level firmware in C/C++.
+    \item Engineered a fully offline, zero-cloud-dependency edge AI stack on NVIDIA Jetson devices: local LLM inference via llama.cpp, RAG-based context retrieval, and imitation/reinforcement learning pipelines via Hugging Face for physical behavior training.
+    \item Developed a production-grade real-time software stack with strict node lifecycle management, BehaviorTree.CPP for task orchestration, and automated CI/CD pipelines via GitHub Actions.
+    \item Designed autonomous mobility architecture implementing multi-sensor fusion across LiDAR, IMU, wheel odometry, and stereo vision for indoor SLAM and navigation.
 \end{itemize}
-
-\vspace{4pt}
+%
+\vspace{2pt}
+%
 \entrytitle{NEC Labs America}{Princeton, NJ}\\
 \entrysub{Research Intern --- Embedded Systems \& Localization}{Jun 2019 -- Apr 2021}
 \begin{itemize}
-  \item Led firmware and algorithm development for NavigateIO, a zero-infrastructure 3D indoor tracking
-        system for first responders, fusing UWB, IMU, LoRa, and Visual Odometry on ARM Cortex-M targets.
-  \item Achieved sub-meter 3D localization accuracy in multi-story NLOS environments using COTS Qorvo
-        DW1000 modules; drop-and-go anchor architecture enables deployment in under 60 seconds.
-  \item Co-invented 4 granted US patents (12,335,899 $\cdot$ 12,207,226 $\cdot$ 11,595,934 $\cdot$
-        11,388,564); contributed to securing \$1M in seed capital.
-  \item Built complete embedded IoT stack: hardware bring-up, sensor drivers (SPI/I2C/UART), real-time
-        data pipelines, and fault-tolerant diagnostics for field deployments.
+    \item Led firmware and core algorithm development for NavigateIO, a zero-infrastructure 3D tracking platform for first responders, fusing UWB, IMU, LoRa, and visual odometry on ARM Cortex-M microcontrollers.
+    \item Achieved sub-meter 3D positioning accuracy in multi-story NLOS environments using Qorvo/Decawave DW1000 UWB transceivers; novel drop-and-go anchor architecture enables deployment in under 60 seconds.
+    \item Architected a resilient end-to-end embedded IoT stack with low-level sensor drivers (SPI, I2C, UART), real-time high-throughput data pipelines, and fault-tolerant system diagnostics.
+    \item Co-invented 4 granted US patents (12,335,899 $\cdot$ 12,207,226 $\cdot$ 11,595,934 $\cdot$ 11,388,564) covering infrastructure-free RF tracking architectures, directly contributing to securing \$1M in seed capital.
 \end{itemize}
-
-\vspace{4pt}
+%
+\vspace{2pt}
+%
 \entrytitle{Stony Brook University --- Wireless \& Networks Lab}{Stony Brook, NY}\\
-\entrysub{Research Assistant (NSF-funded, 3 concurrent grants)}{May 2014 -- May 2019}
+\entrysub{Research Assistant (NSF-funded)}{May 2014 -- May 2025}
 \begin{itemize}
-  \item \textbf{FSO-VR} (NSF \#1815306, \$500K): Designed and prototyped a steerable Free Space Optics
-        wireless link for AR/VR headsets using Galvo-mirror beam steering and real-time RSSI feedback;
-        achieved 99.99\% link availability at 8K VR bandwidth; led to a US patent.
-  \item \textbf{FSONet} (NSF \#1514017, \$720K): Built a 100\,m FSO backhaul prototype with custom
-        Tracking \& Pointing mechanism; validated resilience against fog and vibration; formulated
-        near-optimal transceiver placement algorithm for 3D urban topologies (NYC, San Francisco);
-        published at ACM MobiCom 2017.
-  \item \textbf{SpecSense} (NSF \#1642965, \$800K): Developed crowdsensed spectrum occupancy mapping
-        using RTL-SDRs and spatial interpolation; designed temporal clustering for time-varying maps;
-        published at IEEE INFOCOM 2017.
+    \item \textbf{FSO-VR} (NSF \#1815306, \$500K): Designed and prototyped a steerable Free Space Optics wireless link for AR/VR headsets using Galvo-mirror beam steering and real-time RSSI feedback; achieved 99.99\% link availability at 8K VR bandwidth; led to a US patent.
+    \item \textbf{FSONet} (NSF \#1514017, \$720K): Built a 100m FSO backhaul prototype with custom tracking and pointing mechanism; validated resilience against fog and vibration; formulated near-optimal transceiver placement algorithm for 3D urban topologies; published at ACM MobiCom 2017.
+    \item \textbf{SpecSense} (NSF \#1642965, \$800K): Developed crowdsensed spectrum occupancy mapping using RTL-SDRs and spatial interpolation; designed temporal clustering for time-varying maps; published at IEEE INFOCOM 2017.
 \end{itemize}
-
-\vspace{4pt}
+%
+\vspace{2pt}
+%
+\entrytitle{Stony Brook University}{Stony Brook, NY}\\
+\entrysub{Teaching Assistant}{Aug 2013 -- May 2014}
+\begin{itemize}
+    \item Guided students in Software Development, Theory of Database Systems, and Wireless \& Mobile Networks; provided mentorship and project supervision.
+\end{itemize}
+%
+\vspace{2pt}
+%
 \entrytitle{Philips Research North America}{Briarcliff, NY}\\
 \entrysub{Research Intern --- IoT}{Jun 2015 -- Aug 2015}
 \begin{itemize}
-  \item Implemented IoT mesh network protocols optimized for 4G backhaul connectivity in a healthcare
-        device context.
+    \item Integrated the open-source OpenAirInterface (OAI) EPC stack to encapsulate and route high-density smart city street lighting data over LTE network infrastructure.
 \end{itemize}
-
-\vspace{4pt}
+%
+\vspace{2pt}
+%
 \entrytitle{Bangladesh University of Engineering and Technology}{Dhaka, Bangladesh}\\
 \entrysub{Lecturer, Computer Science}{May 2009 -- Jun 2013}
 \begin{itemize}
-  \item Delivered courses on VLSI Design, AI, Theory of Computation, OS, Database Systems, and
-        Microprocessor Design; served as CISCO CCNA 1--4 Trainer.
-  \item Consulted for Central Bank of Bangladesh automation project and Bangladesh's first
-        machine-readable passport system.
+    \item Delivered courses on VLSI Design, AI, Theory of Computation, Operating Systems, Database Systems, and Microprocessor Design; served as Cisco CCNA 1--4 Trainer.
+    \item Consulted on the Central Bank of Bangladesh automation project and Bangladesh's first machine-readable passport system.
 \end{itemize}
 
 %% ── EDUCATION ───────────────────────────────────────────────────────────────
@@ -156,26 +148,20 @@ Data          & MySQL, Oracle, MongoDB, Qdrant (vector DB), ZenML \\
   \item Dept.\ Fellowship (2013--2014); ACM SIGCOMM, MobiSys \& IEEE SMARTCOMP Travel Grant recipient
 \end{itemize}
 
-\vspace{4pt}
+\vspace{2pt}
 \entrytitle{Stony Brook University}{Stony Brook, NY}\\
 \entrysub{M.S., Computer Science\ \ ---\ \ GPA 3.78/4.0}{Dec 2017}
 
-\vspace{4pt}
+\vspace{2pt}
 \entrytitle{Bangladesh University of Engineering and Technology}{Dhaka, Bangladesh}\\
 \entrysub{B.S., Computer Science\ \ ---\ \ GPA 3.92/4.0\ \ (Dean's List every semester)}{Mar 2009}
-
-%% ── PATENTS ─────────────────────────────────────────────────────────────────
-\section{US Patents\ \ {\normalfont\small(all from NavigateIO first-responder tracking system)}}
-
-\begin{itemize}
-  \item US 12,335,899: Simultaneous localization and synchronization across multiple antennas
-  \item US 12,207,226: Device tracking with radio ranging and sensor functions
-  \item US 11,595,934: Infrastructure-free tracking and response
-  \item US 11,388,564: Infrastructure-free RF tracking in dynamic indoor environments
-\end{itemize}
-
+%
+%% ── PATENTS ──────────────────────────────────────────────────────────────
+\section{US Patents}
+US 12,335,899 $\cdot$ US 12,207,226 $\cdot$ US 11,595,934 $\cdot$ US 11,388,564 --- Infrastructure-free RF tracking and localization system for first responders (NavigateIO).
+%
 %% ── PUBLICATIONS ────────────────────────────────────────────────────────────
-\section{Selected Publications\ \ {\normalfont\small(190+ citations, h-index 7 ---
+\section{Selected Publications\ \ {\normalfont\small(200+ citations, h-index 7 ---
   \href{https://scholar.google.com/citations?user=H0kYswEAAAAJ}{Google Scholar})}}
 
 \begin{enumerate}[leftmargin=1.6em, itemsep=1pt, topsep=2pt, parsep=0pt]
@@ -196,5 +182,13 @@ Data          & MySQL, Oracle, MongoDB, Qdrant (vector DB), ZenML \\
   \item \textbf{Rahman}, Naznin. ``Efficient Routing in a Sensor Network Using Collaborative
         Ants.'' \textit{Springer ICSI}, 2016.
 \end{enumerate}
+%
+%% ── PROJECTS ──────────────────────────────────────────────────────────────
+\section{Projects}
 
+\entrytitle{Praxis --- Open-Source Robotics Learning Platform}{\href{https://github.com/shaifurcodes/praxis-robotics}{github.com/shaifurcodes/praxis-robotics}}
+\begin{itemize}
+    \item Built a fully integrated zero-cloud-dependency LLM/VLA/VLM-enabled mobile manipulation platform: Yahboom 2WD chassis with 520 DC motors, LeRobot SO-101 arm with wrist camera, dual IMX219 front cameras, LiDAR, and Yahboom 10-axis IMU --- all interfaced to NVIDIA Jetson Orin Nano Super 8GB.
+    \item Implemented end-to-end task execution pipeline: voice commands via Bluetooth parsed by a local Gemma 4 E2B LLM, action grounding via SmolVLA, OpenCV-based object detection, LiDAR SLAM for mobility, and imitation/RL-trained arm control for pick-and-place.
+\end{itemize}
 \end{document}

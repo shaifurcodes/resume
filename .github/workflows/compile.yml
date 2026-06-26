@@ -1,10 +1,8 @@
 name: Compile All Resume Versions
-
 on:
   push:
     branches:
-      - main  # Adjust if your main branch is called 'master'
-
+      - main
 jobs:
   build_latex:
     runs-on: ubuntu-latest
@@ -12,19 +10,19 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v4
 
-      # 1. Compile the first resume
+      # 1. Compile the SWE Resume
       - name: Compile SWE Resume
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex          # <-- Just the file name!
+          root_file: main.tex
           working_directory: generic/
 
-      # 2. Compile the second resume
-      #- name: Compile Research Resume
-      #  uses: xu-cheng/latex-action@v3
-      #  with:
-      #    root_file: cv.tex              # <-- Just the file name!
-      #    working_directory: Research-Scientist/
+      # 2. Compile the Robotics Resume
+      - name: Compile Robotics Resume
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
+          working_directory: robotics/
 
       # 3. Commit and Push all generated PDFs
       - name: Commit and Push Compiled PDFs
@@ -32,9 +30,8 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Force git to find PDFs inside subfolders explicitly
           git add generic/main.pdf
-          #git add Research-Scientist/*.pdf
+          git add robotics/main.pdf
           
           git commit -m "Automated Multi-PDF Compilation [skip ci]" || echo "No changes to commit"
           git push
